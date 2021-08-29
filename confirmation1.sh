@@ -1,35 +1,29 @@
 #!/bin/bash
- 
+dashes2="dashes.sh"
 action=$1
 while true
 do
- read -r -p "Sind sie sich das Sie $action ausfuehren wollen? [j/n] " input
+ echo -e "\033[33;7mSie haben $action ausgewahlt\033[0m"
+ read -r -p "Sind sie sich Sicher das Sie $action ausfuehren wollen? [j/n] " input
  
  case $input in
      [jJ])
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- echo "Die Gewaehlte action wird jetzt ausgefuehrt :)"
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-# scanprogram
+ $dashes2
+ echo -e "\033[33;7mDie gewaehlte Action wird jetzt ausgefuehrt\033[0m"
+ $dashes2
  break
  ;;
      [nN])
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- echo "Sie haben die action abgebrochen!"
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+ $dashes2
+ echo -e "\033[33;7mSie haben die action abgebrochen!\033[0m"
+ $dashes2 
  exit 2
  break
         ;;
      *)
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- echo "Das habe ich nicht verstanden, versuchen sie es erneut!"
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
- printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+ $dashes2 
+ echo -e "\033[33;7mDas habe ich nicht verstanden, versuchen sie es erneut!\033[0m"
+ $dashes2 
  sleep 1
  ;;
  esac
