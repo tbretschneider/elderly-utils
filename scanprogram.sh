@@ -5,6 +5,8 @@ confirm="confirmation1.sh"
 dashes2="dashes.sh"
 selectfolder="selectfolder.sh"
 makenewfolder="makenewfolder.sh"
+newfile="newfile.sh"
+
 
 while true 
 do 
@@ -123,4 +125,6 @@ else
 	$makenewfolder
 fi
 
+echo "Es muss jetzt ein neuer Datei Name Ausgesucht werden"
 
+$newfile
