@@ -2,10 +2,10 @@
 
 workingdir=$(pwd)
 confirm="confirmation1.sh"
-dashes2="dashes.sh"
-selectfolder="selectfolder.sh"
-makenewfolder="makenewfolder.sh"
-newfile="newfile.sh"
+dashes2="source dashes.sh"
+selectfolder="source selectfolder.sh"
+makenewfolder="source makenewfolder.sh"
+newfile="source newfile.sh"
 
 
 while true 
@@ -128,3 +128,49 @@ fi
 echo "Es muss jetzt ein neuer Datei Name Ausgesucht werden"
 
 $newfile
+
+echo "Der Scan Vorgang wird jetzt gestartet!"
+
+$dashes2
+
+if [ $plan -eq 1 ]; then
+	scanimage -p --format=png -o="${newfilename}.png"
+	$confirm "Bild ansehen"
+	if [ $? -eq 0 ]
+		eog "${newfilename}.png"
+	else 
+		echo "Ok dann bist du fertig"
+	fi
+elif [ $plan -eq 2 ]; then
+	scanimage -p --format=pnm -o="/tmp/${newfilename}.pnm"
+	pnms2pdf A4 "/tmp/${newfilename}.pnm" > "${newfilename}.pdf"
+	$confirm "Dokument Ansehen"
+	if [ $? -eq 0 ]
+		evince "${newfilename}.pdf"
+	else 
+		echo "Ok dann bist du fertig"
+	fi
+else 
+	page=1
+	while true
+	do 
+		scanimage -p --format=pnm -o="/tmp/${page}.pnm"
+		$confirm "noch eine seite scannen"
+		if [ $? -eq 0 ]
+			echo "Wird Gemacht!"
+			page=$(($page+1))
+		else 
+			echo "Bitte kurz warten bis das pdf generiert wird"
+			break
+		fi
+	done
+	pnms2pdf A4 "/tmp/${1..${page}}.pnm" > "${newfilename}.pdf"
+	$confirm "Dokument Ansehen"
+	if [ $? -eq 0 ]
+		evince "${newfilename}.pdf"
+	else 
+		echo "Ok dann bist du fertig"
+	fi
+
+fi
+

@@ -1,7 +1,7 @@
 #!/bin/bash
 reason=$1
 confirm="confirmation1.sh"
-dashes2="dashes.sh"
+dashes2="source dashes.sh"
 echo "Sie waehlen jetzt einen Bereits Existierenden Ordner aus um $1"
 
 while true

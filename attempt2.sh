@@ -1,6 +1,6 @@
 #!/bin/bash
-dashes2="dashes.sh" 
-scanprogram="scanprogram.sh"
+dashes2="source dashes.sh" 
+scanprogram="source scanprogram.sh"
 while true
 do
  read -r -p "Sind sie sich sicher das sie das ScanProgram Starten Wollten? Wenn ja dann drucken sie jetzt die 'j' Taste auf der Tastertur und danach die enter taste. Sonst die 'n' taste drucken. [j/n] " input

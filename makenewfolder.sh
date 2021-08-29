@@ -1,6 +1,6 @@
 #!/bin/bash
 confirm="confirmation1.sh"
-dashes2="dashes.sh"
+dashes2="source dashes.sh"
 echo "Es wird jetzt ein neuer ordner im Verzeichnis $(pwd) erstellt!"
 $confirm "Neuen Ordner erstellen"
 if [ $? -eq 0 ]; then

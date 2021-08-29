@@ -1,5 +1,5 @@
 #!/bin/bash
-dashes2="dashes.sh"
+dashes2="source dashes.sh"
 action=$1
 while true
 do
