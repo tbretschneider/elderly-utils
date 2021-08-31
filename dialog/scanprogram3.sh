@@ -64,9 +64,9 @@ esac
 
 nachricht 7 60 "Die Datei wird im Ordner 'scans' gespeichert. Man kann ihn finden in dem man scans in die Aktivtaten ubersicht schreibt."
 
-mkdir -p "~/scans"
+mkdir -p "${HOME}/scans"
 
-FILE="~/scans"
+FILE="${HOME}/scans"
 
 
 ydm=$(date -I)
